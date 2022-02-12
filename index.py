@@ -30,10 +30,7 @@ def main_handler(event, context):
 
     param_list = []
     for video in videos:
-        body = {
-            'body': video
-        }
-        json_str = json.dumps(body)
+        json_str = json.dumps(video)
         print(json_str)
         param_list.append(json_str)
 
@@ -82,12 +79,4 @@ def process(param_json):
         data=param_json)
     print(response.content)
     return response.text.encode('utf8')
-
-
-if __name__ == '__main__':
-    sdd = b'"{\\"Result\\": \\"Failure\\", \\"ErrorCode\\": \\"InvalidParameter\\", \\"ErrorMessage\\": \\"Invalid parameter: \'Data\'\\", \\"RequestId\\": \\"15acfeb8ebb7ea703cd155232c70508c\\"}"'
-    result_json = json.loads(sdd.decode("utf-8"))
-    if 'Failure' in result_json:
-        print('dd')
-    print(result_json)
 
