@@ -35,7 +35,7 @@ def main_handler(event, context):
         param_list.append(json_str)
 
     pool = ThreadPool(6)
-    results = pool.map(process, param_list)
+    results = pool.map(composition, param_list)
     print(results)
     pool.close()
     pool.join()
@@ -43,14 +43,18 @@ def main_handler(event, context):
     urls = []
     logger.info("开始拼接视频")
     for result in results:
-        result_str = result.decode("utf-8")
-        print(result_str)
-        result_json = json.loads(result_str)
-        print(result_json)
-        if 'Failure' in result_json:
-            return result_json
-        url = result_json['Data']['OutputUrl']
+        # result_str = result.decode("utf-8")
+        # print(result_str)
+        # result_json = json.loads(result_str)
+        print(result)
+        if 'Failure' in result:
+            return result
+        url = result['Data']['OutputUrl']
         urls.append(url)
+    return splice(urls, audio, callback_url, vod_region, sub_app_id, class_id)
+
+
+def splice(urls, audio, callback_url, vod_region, sub_app_id, class_id):
     splice_data = {
         "Action": "SpliceVideo",
         "Data": {
@@ -78,10 +82,10 @@ def main_handler(event, context):
     return json.loads(response.text.encode('utf8'))
 
 
-def process(param_json):
+def composition(param_json):
     response = requests.post(
         'https://service-ngvp1ppd-1307427535.cd.apigw.tencentcs.com/release/shifang-ffmpeg-composition-sync',
         data=param_json)
     print(response.content)
-    return response.text.encode('utf8')
+    return json.loads(response.text.encode('utf8'))
 
