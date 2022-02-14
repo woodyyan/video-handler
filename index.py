@@ -70,7 +70,12 @@ def main_handler(event, context):
         }
     }
     print(splice_data)
-    return splice_data
+
+    response = requests.post(
+        'https://service-bis1czil-1307427535.cd.apigw.tencentcs.com/release/shifang-ffmpeg-splice-sync',
+        data=json.dumps(splice_data))
+    print(response.content)
+    return json.loads(response.text.encode('utf8'))
 
 
 def process(param_json):
