@@ -20,7 +20,7 @@
                             "Height": 1280
                         },
                         "Framerate": 15,
-                        "Bitrate": 500,
+                        "Bitrate": 1800,
                         "Texts": [],
                         "Pictures": []
                     },
@@ -44,7 +44,7 @@
                             "Height": 1280
                         },
                         "Framerate": 15,
-                        "Bitrate": 500,
+                        "Bitrate": 1800,
                         "Texts": [],
                         "Pictures": []
                     },
@@ -68,7 +68,7 @@
                             "Height": 1280
                         },
                         "Framerate": 15,
-                        "Bitrate": 500,
+                        "Bitrate": 1800,
                         "Texts": [
                             {
                                 "Content": "作品名称：包装动画制作-缩放",
@@ -126,7 +126,7 @@
                             "Height": 1280
                         },
                         "Framerate": 15,
-                        "Bitrate": 500,
+                        "Bitrate": 1800,
                         "Texts": [],
                         "Pictures": []
                     },
@@ -150,7 +150,7 @@
                             "Height": 1280
                         },
                         "Framerate": 15,
-                        "Bitrate": 500,
+                        "Bitrate": 1800,
                         "Texts": [
                             {
                                 "Content": "作品名称：包装动画制作-缩放",
@@ -209,7 +209,7 @@
                             "Height": 1280
                         },
                         "Framerate": 15,
-                        "Bitrate": 500,
+                        "Bitrate": 1800,
                         "Texts": [],
                         "Pictures": []
                     },
