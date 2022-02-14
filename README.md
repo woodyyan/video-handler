@@ -198,7 +198,6 @@
                 }
             },
             {
-                "Action": "CompositionVideo",
                 "Data": {
                     "Input": {
                         "URL": "https://woody-chengdu-1307427535.cos.ap-chengdu.myqcloud.com/shifang/6%E6%89%8B%E6%9C%BA%E7%AB%AF%E7%89%87%E5%B0%BE.MP4",
