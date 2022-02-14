@@ -17,38 +17,49 @@ def main_handler(event, context):
 
     if "body" not in event.keys():
         return {"code": 410, "errorMsg": "event is not come from api gateway"}
+    callback_url = ''
+    try:
+        req_body = event['body']
+        req_param = json.loads(req_body)
+        logger.info("输入参数: " + json.dumps(req_param))
+        videos = req_param['Data']['Videos']
+        audio = req_param['Data']['Audio']
+        callback_url = req_param['Data']['CallbackURL']
+        vod_region = req_param['Data']['Output']['Vod']['Region']
+        sub_app_id = req_param['Data']['Output']['Vod']['SubAppId']
+        class_id = req_param['Data']['Output']['Vod']['ClassId']
 
-    req_body = event['body']
-    req_param = json.loads(req_body)
-    logger.info("输入参数: " + json.dumps(req_param))
-    videos = req_param['Data']['Videos']
-    audio = req_param['Data']['Audio']
-    callback_url = req_param['Data']['CallbackURL']
-    vod_region = req_param['Data']['Output']['Vod']['Region']
-    sub_app_id = req_param['Data']['Output']['Vod']['SubAppId']
-    class_id = req_param['Data']['Output']['Vod']['ClassId']
+        param_list = []
+        for video in videos:
+            json_str = json.dumps(video)
+            print(json_str)
+            param_list.append(json_str)
 
-    param_list = []
-    for video in videos:
-        json_str = json.dumps(video)
-        print(json_str)
-        param_list.append(json_str)
+        pool = ThreadPool(6)
+        results = pool.map(composition, param_list)
+        print(results)
+        pool.close()
+        pool.join()
 
-    pool = ThreadPool(6)
-    results = pool.map(composition, param_list)
-    print(results)
-    pool.close()
-    pool.join()
-
-    urls = []
-    logger.info("开始拼接视频")
-    for result in results:
-        print(result)
-        if 'Failure' in result:
-            return result
-        url = result['Data']['OutputUrl']
-        urls.append(url)
-    return splice(urls, audio, callback_url, vod_region, sub_app_id, class_id)
+        urls = []
+        logger.info("开始拼接视频")
+        for result in results:
+            print(result)
+            if 'Failure' in result:
+                return result
+            url = result['Data']['OutputUrl']
+            urls.append(url)
+        callback_body = splice(urls, audio, callback_url, vod_region, sub_app_id, class_id)
+    except Exception as err:
+        callback_body = {
+            "Result": "Failure",
+            "ErrorCode": "InvalidParameter",
+            "ErrorMessage": "Invalid parameter: " + str(err),
+            "RequestId": request_id
+        }
+        callback(callback_url, callback_body)
+        return json.dumps(callback_body)
+    return callback_body
 
 
 def splice(urls, audio, callback_url, vod_region, sub_app_id, class_id):
@@ -86,3 +97,12 @@ def composition(param_json):
     print(response.content)
     return json.loads(response.text.encode('utf8'))
 
+
+# 回调逻辑。
+def callback(url, data):
+    if not url:
+        logger.info("Callback url is empty, no need to callback.")
+        return
+
+    response = requests.post(url, json=data)
+    logger.info("Callback response:", response.text.encode('utf8'))

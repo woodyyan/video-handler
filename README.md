@@ -14,7 +14,7 @@
                     "Input": {
                         "URL": "https://woody-chengdu-1307427535.cos.ap-chengdu.myqcloud.com/shifang/%E7%89%87%E5%A4%B4.mp4",
                         "Audio": true,
-                        "CallbackURL": "https://enk885gn0j1qox.m.pipedream.net",
+                        "CallbackURL": "",
                         "Resolution": {
                             "Width": 720,
                             "Height": 1280
@@ -38,7 +38,7 @@
                     "Input": {
                         "URL": "https://woody-chengdu-1307427535.cos.ap-chengdu.myqcloud.com/shifang/%E7%89%87%E5%A4%B4.mp4",
                         "Audio": true,
-                        "CallbackURL": "https://enk885gn0j1qox.m.pipedream.net",
+                        "CallbackURL": "",
                         "Resolution": {
                             "Width": 720,
                             "Height": 1280
@@ -62,7 +62,7 @@
                     "Input": {
                         "URL": "https://woody-chengdu-1307427535.cos.ap-chengdu.myqcloud.com/shifang/3%E5%AE%9E%E6%93%8D8%E7%A7%92%E7%A4%BA%E4%BE%8B.MP4",
                         "Audio": true,
-                        "CallbackURL": "https://enk885gn0j1qox.m.pipedream.net",
+                        "CallbackURL": "",
                         "Resolution": {
                             "Width": 720,
                             "Height": 1280
@@ -120,7 +120,7 @@
                     "Input": {
                         "URL": "https://woody-chengdu-1307427535.cos.ap-chengdu.myqcloud.com/shifang/5%E6%88%90%E6%9E%9C%E8%A7%86%E9%A2%91%E7%A4%BA%E4%BE%8B.mp4",
                         "Audio": true,
-                        "CallbackURL": "https://enk885gn0j1qox.m.pipedream.net",
+                        "CallbackURL": "",
                         "Resolution": {
                             "Width": 720,
                             "Height": 1280
@@ -144,7 +144,7 @@
                     "Input": {
                         "URL": "http://1500009267.vod2.myqcloud.com/6c9c6980vodcq1500009267/0d7032f3387702294461673432/pz3wNIkIjCEA.mp4",
                         "Audio": true,
-                        "CallbackURL": "https://enk885gn0j1qox.m.pipedream.net",
+                        "CallbackURL": "",
                         "Resolution": {
                             "Width": 720,
                             "Height": 1280
@@ -203,7 +203,7 @@
                     "Input": {
                         "URL": "https://woody-chengdu-1307427535.cos.ap-chengdu.myqcloud.com/shifang/6%E6%89%8B%E6%9C%BA%E7%AB%AF%E7%89%87%E5%B0%BE.MP4",
                         "Audio": true,
-                        "CallbackURL": "https://enk885gn0j1qox.m.pipedream.net",
+                        "CallbackURL": "",
                         "Resolution": {
                             "Width": 720,
                             "Height": 1280
