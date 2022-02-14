@@ -43,9 +43,6 @@ def main_handler(event, context):
     urls = []
     logger.info("开始拼接视频")
     for result in results:
-        # result_str = result.decode("utf-8")
-        # print(result_str)
-        # result_json = json.loads(result_str)
         print(result)
         if 'Failure' in result:
             return result
