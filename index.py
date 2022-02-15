@@ -59,6 +59,7 @@ def main_handler(event, context):
         }
         callback(callback_url, callback_body)
         return json.dumps(callback_body)
+    callback(callback_url, callback_body)
     return callback_body
 
 
