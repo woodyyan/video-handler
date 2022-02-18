@@ -49,7 +49,9 @@ def main_handler(event, context):
                 return result
             url = result['Data']['OutputUrl']
             urls.append(url)
-        callback_body = splice(urls, audio, callback_url, vod_region, sub_app_id, class_id)
+        callback_body = splice(urls, audio, '', vod_region, sub_app_id, class_id)
+        callback_body['RequestId'] = request_id
+        callback(callback_url, callback_body)
     except Exception as err:
         callback_body = {
             "Result": "Failure",
